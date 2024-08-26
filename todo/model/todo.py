@@ -14,19 +14,45 @@ class Todo:
         if tag not in self.tags:
             self.tags.append(tag)
 
-    def __str__(self) -> str: #retorna un string
+    def __str__(self) -> str:
         return f"{self.code_id} - {self.title}"
 
 class TodoBook:
 
-    def __init__(self,todos):
-        self.todos: dict[int, Todo] = {}  #Inicializamos un diccionario vacio
+    def __init__(self):
+        self.todos: dict[int, Todo] = {}
 
-    def add_todo(self, title: str, description : str) -> int: #retorna un entero
+    def add_todo(self, title: str, description: str) -> int:
         id = len(self.todos) + 1
-        new_object = Todo(title, description)
-        self.todos_[id] = new_object
+        new_object = Todo(id, title, description)
+        self.todos[id] = new_object
         return id
+
+    def pending_todos(self) -> list:
+        return [todo for todo in self.todos.values() if not todo.completed]
+
+    def completed_todos(self) -> list:
+        return [todo for todo in self.todos.values() if todo.completed]
+
+    def tags_todo_count(self):
+        tags_counter = {}
+        for todo in self.todos.values():
+            for tag in todo.tags:
+                if tag in tags_counter:
+                    tags_counter[tag] = tags_counter[tag] + 1
+                else:
+                    tags_counter[tag] = 1
+        return tags_counter
+
+
+
+
+
+
+
+
+
+
 
 
 
