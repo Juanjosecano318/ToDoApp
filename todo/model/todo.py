@@ -22,6 +22,15 @@ class TodoBook:
     def __init__(self,todos):
         self.todos: dict[int, Todo] = {}  #Inicializamos un diccionario vacio
 
+    def add_todo(self, title: str, description : str) -> int: #retorna un entero
+        id = len(self.todos) + 1
+        new_object = Todo(title, description)
+        self.todos_[id] = new_object
+        return id
+
+
+
+
 
 
 
