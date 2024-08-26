@@ -13,6 +13,10 @@ class Todo:
     def add_tag(self,tag: str):
         if tag not in self.tags:
             self.tags.append(tag)
+    def __str__(self) -> str: #retorna un string
+        return f"{self.code} - {self.title}"
+
+
 
 
 
