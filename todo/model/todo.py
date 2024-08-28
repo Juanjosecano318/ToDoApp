@@ -23,7 +23,7 @@ class TodoBook:
         self.todos: dict[int, Todo] = {}
 
     def add_todo(self, title: str, description: str) -> int:
-        id = len(self.todos) + 1
+        id: int = len(self.todos) + 1
         new_object = Todo(id, title, description)
         self.todos[id] = new_object
         return id
@@ -34,15 +34,17 @@ class TodoBook:
     def completed_todos(self) -> list:
         return [todo for todo in self.todos.values() if todo.completed]
 
-    def tags_todo_count(self):
-        tags_counter = {}
+    def tags_todo_count(self) -> dict[str:int]:
+        tags_counter: dict[str:int] = {}
         for todo in self.todos.values():
             for tag in todo.tags:
-                if tag in tags_counter:
+                if tag in tags_counter:   #Terminar comprender
                     tags_counter[tag] = tags_counter[tag] + 1
                 else:
                     tags_counter[tag] = 1
         return tags_counter
+
+
 
 
 
